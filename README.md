@@ -19,14 +19,14 @@ Static pages for the App Store listing:
    ```
    git init && git add . && git commit -m "VaultLocker website"
    git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/vaultlocker.git
+   git remote add origin https://github.com/JFlic/VaultLockr.git
    git push -u origin main
    ```
 3. On GitHub: Settings › Pages › Source: "Deploy from a branch", Branch: `main`, folder `/ (root)`.
-4. After about a minute the site is live at `https://YOUR-USERNAME.github.io/vaultlocker/`.
+4. After about a minute the site is live at `https://jflic.github.io/VaultLockr/`.
 
 ## App Store Connect
 
-- Privacy Policy URL: `…/privacy.html`
-- Support URL: `…/support.html`
+- Privacy Policy URL: `https://jflic.github.io/VaultLockr/privacy.html`
+- Support URL: `https://jflic.github.io/VaultLockr/support.html`
 - App Privacy questionnaire: **Data Not Collected** (matches the policy: no accounts, analytics, ads or tracking).
