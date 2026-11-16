@@ -42,10 +42,10 @@ Then open http://localhost:8000. Stop with Ctrl+C.
    git push -u origin main
    ```
 3. On GitHub: Settings › Pages › Source: "Deploy from a branch", Branch: `main`, folder `/ (root)`.
-4. After about a minute the site is live at `https://jflic.github.io/VaultLockr/`.
+4. After about a minute the site is live at `https://vaultlockr.com` (custom domain via the `CNAME` file; DNS and `support@` email forwarding are on Cloudflare).
 
 ## App Store Connect
 
-- Privacy Policy URL: `https://jflic.github.io/VaultLockr/privacy.html`
-- Support URL: `https://jflic.github.io/VaultLockr/support.html`
+- Privacy Policy URL: `https://vaultlockr.com/privacy.html`
+- Support URL: `https://vaultlockr.com/support.html`
 - App Privacy questionnaire: **Data Not Collected** (matches the policy: no accounts, analytics, ads or tracking).
