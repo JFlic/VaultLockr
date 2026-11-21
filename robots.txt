@@ -1,0 +1,23 @@
+# VaultLocker — https://vaultlockr.com
+# Everything public is crawlable. Draft pages (before.html, compare.html) carry
+# <meta name="robots" content="noindex"> instead of a Disallow here: a disallowed
+# page can't be fetched, so crawlers would never see its noindex and could still
+# list the bare URL.
+
+User-agent: *
+Allow: /
+
+# AI search and assistant crawlers, named so the intent is explicit.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://vaultlockr.com/sitemap.xml

@@ -5,63 +5,173 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>VaultLocker – Encrypted Photo Vault for iPhone</title>
   <meta name="description" content="VaultLocker keeps your photos, videos and notes encrypted on your iPhone, opened by a two-sided pattern only you know. No account, no servers, no tracking.">
-  <meta name="theme-color" content="#15133d">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/icon.png">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-itunes-app" content="app-id=6830413093">
+  <link rel="canonical" href="https://vaultlockr.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VaultLocker">
+  <meta property="og:url" content="https://vaultlockr.com/">
+  <meta property="og:title" content="VaultLocker – Encrypted Photo Vault for iPhone">
+  <meta property="og:description" content="VaultLocker keeps your photos, videos and notes encrypted on your iPhone, opened by a two-sided pattern only you know. No account, no servers, no tracking.">
+  <meta property="og:image" content="https://vaultlockr.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="VaultLocker: the private vault for photos you'd rather keep">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://vaultlockr.com/#org",
+      "name": "VaultLocker",
+      "url": "https://vaultlockr.com/",
+      "logo": "https://vaultlockr.com/assets/icon-v2-180.png",
+      "email": "support@vaultlockr.com",
+      "sameAs": [
+        "https://apps.apple.com/app/id6830413093"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vaultlockr.com/#website",
+      "url": "https://vaultlockr.com/",
+      "name": "VaultLocker",
+      "publisher": {
+        "@id": "https://vaultlockr.com/#org"
+      }
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://vaultlockr.com/#app",
+      "name": "VaultLocker",
+      "description": "VaultLocker keeps your photos, videos and notes encrypted on your iPhone, opened by a two-sided pattern only you know. No account, no servers, no tracking.",
+      "url": "https://vaultlockr.com/",
+      "downloadUrl": "https://apps.apple.com/app/id6830413093",
+      "installUrl": "https://apps.apple.com/app/id6830413093",
+      "operatingSystem": "iOS 15.0 or later",
+      "applicationCategory": "MultimediaApplication",
+      "image": "https://vaultlockr.com/assets/og-image.png",
+      "publisher": {
+        "@id": "https://vaultlockr.com/#org"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "url": "https://apps.apple.com/app/id6830413093"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vaultlockr.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VaultLocker?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An iPhone app that keeps photos, videos, documents and notes in encrypted vaults, each opened by its own two-sided pattern."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an account or email?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. There's no sign-up of any kind. Your pattern is the only thing that opens a vault."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I forget my pattern?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tap Use recovery phrase on the lock screen, enter the vault's 12-word phrase, and set a new pattern. Your files stay as they are."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you or Apple see my files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Files are encrypted on your iPhone with a key derived from your pattern. We have no servers, and iCloud backups are encrypted before they're uploaded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I lose both my pattern and phrase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The vault can't be opened by anyone, including us. That's the trade-off of having no back door, so keep your phrase somewhere safe, away from your phone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I move to a new phone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Turn on Encrypted Backup, then on the new phone choose Restore from iCloud backup and enter the vault's recovery phrase. Full steps are on the support page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does VaultLocker collect any data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. No analytics, no ads, no tracking. Read the privacy policy for the details."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <link rel="icon" type="image/svg+xml" href="assets/icon-v2.svg">
+  <link rel="icon" type="image/png" href="assets/favicon-v2.png">
+  <link rel="apple-touch-icon" href="assets/icon-v2-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="style.css">
-  <script>
-    // Runs before first paint so a stored or OS-preferred theme never flashes.
-    (function () {
-      var t = null;
-      try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5 10 17l9-10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="i-grid" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></g><path d="M5 5h7v7h7v7" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
-  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="m11 12 8-8m-3 3 2 2m-4 0 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4m0 3v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 10a4 4 0 0 1 0 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 14.5h4v-2a2 2 0 0 0-4 0z" fill="currentColor"/></symbol>
-  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m8.2 10.8 7.6-3.6m-7.6 6 7.6 3.6" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="i-sync" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="i-mask" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 9h8M8 12h2m2 0h2m2 0h0M8 15h2m2 0h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-note" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12h7M9 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-user-off" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 20a7 7 0 0 1 14 0M3 3l18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 4l16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5 10 17l9-10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.2 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.5-1-2.5-3.9zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></symbol>
+  <symbol id="i-user-off" viewBox="0 0 36 36"><circle cx="18" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 31a11 11 0 0 1 22 0M5 5l26 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-padlock" viewBox="0 0 36 36"><rect x="7" y="15" width="22" height="16" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 15v-4a6 6 0 0 1 12 0v4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="22" r="2" fill="currentColor"/><path d="M18 24v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 36 36"><path d="M4 18s5-9 14-9 14 9 14 9-5 9-14 9S4 18 4 18z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6 6l24 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="m4 17 5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 10 5-3v10l-5-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12h7M9 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></g></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m11 12 8-8m-3 3 2 2m-4 0 2 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
 </svg>
 
 <a class="skip" href="#main">Skip to main content</a>
 
 <header class="site-header">
-  <div class="container nav-inner">
-    <a href="index.html" class="logo"><img src="assets/icon.png" alt="" width="32" height="32"><span>VaultLocker</span></a>
+  <div class="nav">
+    <a href="index.html" class="logo"><img src="assets/logo-mark.svg" alt="" width="28" height="28">vaultlocker</a>
     <nav id="primary-nav" class="nav-links" aria-label="Primary">
+      <a href="#how-it-works">How it works</a>
       <a href="#features">Features</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#security">Security</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
       <a href="support.html">Support</a>
     </nav>
     <div class="nav-actions">
-      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle light and dark theme">
-        <svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-        <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <a class="btn btn-primary btn-sm" href="https://apps.apple.com/app/idAPP_STORE_ID">Get the App</a>
-      <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
-        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <a class="btn btn-line btn-sm" href="support.html">Get help</a>
+      <a class="btn btn-olive btn-sm" href="https://apps.apple.com/app/id6830413093"><svg class="ic"><use href="#i-apple"/></svg>Download</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
     </div>
   </div>
@@ -71,204 +181,232 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="pill">AES-256 encryption <span class="dot"></span> On-device only <span class="dot"></span> No account</div>
-        <h1>Your private photos, <span class="accent">locked in a cube.</span></h1>
-        <p class="lead">VaultLocker encrypts your photos, videos and notes on your iPhone and opens them with a two-sided pattern only you know. No sign-up, no email, no servers.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="https://apps.apple.com/app/idAPP_STORE_ID"><svg><use href="#i-download"/></svg>Download on the App Store</a>
-          <a class="btn btn-ghost" href="#how-it-works">See how it works</a>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <a class="badge" href="#how-it-works"><b>Free</b>No account, no servers <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <h1>The private vault for photos you'd rather keep</h1>
+          <p class="hero-sub">Photos, videos and notes, encrypted on your iPhone.<br>Opened by a pattern only you know.</p>
+          <div class="hero-cta">
+            <a class="btn btn-olive" href="https://apps.apple.com/app/id6830413093">Download for free <svg class="ic"><use href="#i-down"/></svg></a>
+          </div>
         </div>
-        <div class="microline">
-          <span><svg><use href="#i-check"/></svg>Free to start</span>
-          <span><svg><use href="#i-check"/></svg>No account needed</span>
-          <span><svg><use href="#i-check"/></svg>Files never leave unencrypted</span>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-photo"></div>
+          <div class="art-lime"></div>
+          <div class="window art-window">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <h3>Travel documents</h3>
+            <div class="chips">
+              <span class="chip"><svg class="ic"><use href="#i-lock"/></svg>AES-256</span>
+              <span class="chip"><svg class="ic"><use href="#i-layers"/></svg>Hidden vault</span>
+            </div>
+            <ul class="files">
+              <li><span class="thumb t1"></span>passport-scan.heic<small><svg class="ic"><use href="#i-lock"/></svg>encrypted</small></li>
+              <li><span class="thumb t2"></span>beach-day.mov<small><svg class="ic"><use href="#i-lock"/></svg>encrypted</small></li>
+              <li><span class="thumb t3"></span>lease-signed.pdf<small><svg class="ic"><use href="#i-lock"/></svg>encrypted</small></li>
+              <li><span class="thumb t4"></span>Door codes<small><svg class="ic"><use href="#i-lock"/></svg>encrypted</small></li>
+            </ul>
+            <span class="pill-dark"><svg class="ic"><use href="#i-grid"/></svg>Draw your pattern to open</span>
+          </div>
+          <div class="art-phone">
+            <!-- The lock screen redrawn in the site's palette rather than a
+                 screenshot, so it can use the page's own fonts and animate. -->
+            <svg class="lock-screen" viewBox="0 0 390 844">
+              <rect width="390" height="844" fill="#f7f7f2"/>
+              <text x="48" y="38" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#292929">7:39</text>
+              <rect x="137" y="12" width="116" height="34" rx="17" fill="#0e0f0c"/>
+              <g fill="#292929"><rect x="300" y="30" width="3" height="6" rx="1"/><rect x="305" y="27" width="3" height="9" rx="1"/><rect x="310" y="24" width="3" height="12" rx="1"/><rect x="315" y="21" width="3" height="15" rx="1"/></g>
+              <rect x="326" y="22" width="24" height="13" rx="4" fill="none" stroke="#292929" stroke-width="1.4"/><rect x="328.5" y="24.5" width="17" height="8" rx="2" fill="#292929"/>
+              <image href="assets/icon-v2.svg" x="159" y="104" width="72" height="72"/>
+              <text x="195" y="222" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="27" fill="#0e0f0c">Draw your pattern</text>
+              <text x="195" y="250" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#72726e">Side one of two</text>
+              <g class="ls-dots" fill="#d5d5d2"></g>
+              <polyline class="ls-trace" points="65,330 130,330 195,395 195,460 260,525" fill="none" stroke="#5b6f00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" pathLength="100"/>
+              <text x="195" y="752" text-anchor="middle" font-family="Inter, sans-serif" font-weight="500" font-size="16" fill="#292929">Use recovery phrase</text>
+              <text x="195" y="784" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#72726e">Join shared vault</text>
+              <rect x="128" y="824" width="134" height="5" rx="2.5" fill="#292929"/>
+            </svg>
+          </div>
         </div>
       </div>
-      <div class="phone-wrap">
-        <div class="phone"><img src="assets/screen-lock.png" alt="VaultLocker lock screen: draw your pattern on a five by five grid of dots" width="900" height="1957"></div>
-        <div class="float-chip one"><svg><use href="#i-lock"/></svg>AES-256-GCM</div>
-        <div class="float-chip two"><svg><use href="#i-layers"/></svg>Hidden vaults</div>
+
+      <div class="promises">
+        <ul>
+          <li><svg class="ic"><use href="#i-user-off"/></svg><span><b>No sign-up</b>, no email, no account to hack</span></li>
+          <li><svg class="ic"><use href="#i-padlock"/></svg><span><b>Encrypted before it's saved</b>, with a key only your pattern makes</span></li>
+          <li><svg class="ic"><use href="#i-eye-off"/></svg><span>No analytics, <b>no ads, no tracking</b> and no servers of ours</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- Trust strip -->
-  <section class="trust">
-    <div class="container trust-inner">
-      <p>VaultLocker is a private vault for the things that shouldn't sit in your camera roll. Everything is encrypted before it's saved, and nobody else holds a key, including us.</p>
-      <div class="chips">
-        <span class="chip"><svg><use href="#i-user-off"/></svg>No accounts</span>
-        <span class="chip"><svg><use href="#i-eye-off"/></svg>No tracking</span>
-        <span class="chip"><svg><use href="#i-lock"/></svg>No back doors</span>
-      </div>
-    </div>
-  </section>
+  <h2 class="giant reveal">Nothing to see here</h2>
 
-  <!-- Features -->
-  <section id="features" class="section">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Features</span>
-        <h2>Privacy that holds up when it matters.</h2>
-        <p class="lead">Hiding a file isn't the same as protecting it. VaultLocker encrypts every item so it's unreadable without your pattern.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="feature reveal">
-          <div class="ic"><svg><use href="#i-grid"/></svg></div>
-          <h3>Two-sided pattern</h3>
-          <p>Draw one pattern, the cube turns, draw a second. Together they become your encryption key.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="ic"><svg><use href="#i-key"/></svg></div>
-          <h3>Recovery phrase</h3>
-          <p>Each vault gets a 12-word phrase. Forget your pattern and the phrase lets you back in.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="ic"><svg><use href="#i-layers"/></svg></div>
-          <h3>Hidden vaults</h3>
-          <p>Any pattern opens a vault. Nobody watching can tell how many you have, or whether there are any.</p>
-        </article>
-        <article class="feature reveal">
-          <span class="tag">Pro</span>
-          <div class="ic"><svg><use href="#i-alert"/></svg></div>
-          <h3>Duress vault</h3>
-          <p>Forced to unlock? One pattern opens a decoy vault and silently wipes the others.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="ic"><svg><use href="#i-cloud"/></svg></div>
-          <h3>Encrypted iCloud backup</h3>
-          <p>Backs up to your own iCloud Drive, encrypted first. Only your recovery phrase can restore it.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="ic"><svg><use href="#i-camera"/></svg></div>
-          <h3>Private camera</h3>
-          <p>Take photos and videos straight into a vault. They never touch your camera roll.</p>
-        </article>
-        <article class="feature reveal">
-          <span class="tag">Pro</span>
-          <div class="ic"><svg><use href="#i-share"/></svg></div>
-          <h3>Vault sharing</h3>
-          <p>Send an encrypted copy of a vault with a one-time phrase. Only the person with both can open it.</p>
-        </article>
-        <article class="feature reveal">
-          <span class="tag">Pro</span>
-          <div class="ic"><svg><use href="#i-sync"/></svg></div>
-          <h3>Multi-device sync</h3>
-          <p>Keep a vault in step across your own phones, with changes merged in both directions.</p>
-        </article>
-        <article class="feature reveal">
-          <span class="tag">Pro</span>
-          <div class="ic"><svg><use href="#i-mask"/></svg></div>
-          <h3>Disguised app icon</h3>
-          <p>Swap the icon for an everyday one like Calculator or Measure, so it blends into your home screen.</p>
-        </article>
+  <!-- Spec band -->
+  <section class="dark" id="security">
+    <div class="wrap">
+      <h2 class="dark-title">Built on cryptography you can check</h2>
+      <div class="specs">
+        <div class="spec reveal"><strong>AES-256-GCM</strong><span>Every photo, video, thumbnail and the vault's contents list.</span></div>
+        <div class="spec reveal"><strong>210,000 rounds</strong><span>PBKDF2-HMAC-SHA256 key derivation, with a per-device salt in the Keychain.</span></div>
+        <div class="spec reveal"><strong>12-word phrase</strong><span>Each vault gets one. Forget your pattern and it lets you back in.</span></div>
+        <div class="spec reveal"><strong>Zero servers</strong><span>No account, no reset link to phish, and nothing of ours to breach.</span></div>
       </div>
     </div>
   </section>
 
   <!-- How it works -->
-  <section id="how-it-works" class="section" style="padding-top:0">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">How it works</span>
-        <h2>Three steps to a locked vault.</h2>
+  <section class="flow" id="how-it-works">
+    <div class="wrap">
+      <div class="flow-head reveal">
+        <h2>VaultLocker keeps things private before, during and after you open it.</h2>
       </div>
-      <div class="steps">
-        <div class="step reveal">
-          <span class="num">01</span>
-          <h3>Draw your pattern</h3>
-          <p>Connect at least four dots on each side of the cube. Write down the recovery phrase it gives you.</p>
-        </div>
-        <div class="step reveal">
-          <span class="num">02</span>
-          <h3>Fill the vault</h3>
-          <p>Import photos, videos and documents, write notes, or shoot new ones with the private camera.</p>
-        </div>
-        <div class="step reveal">
-          <span class="num">03</span>
-          <h3>Lock and walk away</h3>
-          <p>Close the app and it's locked. Optionally delete the originals from your photo library.</p>
+      <div class="flow-grid">
+        <nav class="flow-nav" aria-label="Steps">
+          <a href="#step-pattern" class="active">Set your pattern</a>
+          <a href="#step-fill">Fill the vault</a>
+          <a href="#step-lock">Lock and walk away</a>
+        </nav>
+        <div class="flow-steps">
+          <article class="flow-step" id="step-pattern">
+            <h3>Two sides, one key</h3>
+            <p>Draw a pattern on the cube, watch it turn, then draw a second. Together they become your encryption key, and VaultLocker gives you a recovery phrase to write down.</p>
+            <div class="scene scene-sea" aria-hidden="true">
+              <div class="window">
+                <div class="dots mute"><i></i><i></i><i></i></div>
+                <h4>New vault</h4>
+                <div class="cube-faces">
+                  <div class="face"><small>Side one</small><svg viewBox="0 0 200 200" data-path="20,20 60,20 100,60 100,100 140,140"></svg></div>
+                  <div class="face"><small>Side two</small><svg viewBox="0 0 200 200" data-path="180,20 140,60 100,100 60,100 60,180"></svg></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="flow-step" id="step-fill">
+            <h3>Bring in what matters</h3>
+            <p>Import photos, videos and documents, write notes, or shoot new ones with the private camera so they never touch your camera roll.</p>
+            <div class="scene scene-sand" aria-hidden="true">
+              <div class="window">
+                <div class="dots mute"><i></i><i></i><i></i></div>
+                <h4>Personal</h4>
+                <div class="tiles">
+                  <span class="t1"><svg class="ic"><use href="#i-photo"/></svg></span>
+                  <span class="t2"><svg class="ic"><use href="#i-video"/></svg></span>
+                  <span class="t3"><svg class="ic"><use href="#i-photo"/></svg></span>
+                  <span class="t4"><svg class="ic"><use href="#i-note"/></svg></span>
+                  <span class="t2"><svg class="ic"><use href="#i-photo"/></svg></span>
+                  <span class="t4"><svg class="ic"><use href="#i-photo"/></svg></span>
+                  <span class="t1"><svg class="ic"><use href="#i-video"/></svg></span>
+                  <span class="t3"><svg class="ic"><use href="#i-note"/></svg></span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="flow-step" id="step-lock">
+            <h3>Close it and it's locked</h3>
+            <p>Leave the app and the vault locks behind you. Optionally delete the originals from your photo library once they're safe inside.</p>
+            <div class="scene scene-moss" aria-hidden="true">
+              <div class="window">
+                <div class="dots mute"><i></i><i></i><i></i></div>
+                <div class="locked-card">
+                  <span class="lock-badge"><svg class="ic"><use href="#i-lock"/></svg></span>
+                  <h4>Locked</h4>
+                  <p>Only your pattern, or your recovery phrase, opens it again.</p>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Security -->
-  <section id="security" class="section security">
-    <div class="container security-grid">
+  <!-- Hidden vaults -->
+  <section class="lime">
+    <div class="wrap lime-grid">
       <div class="reveal">
-        <span class="eyebrow">Security model</span>
-        <h2>Your pattern is the key. We never see it.</h2>
-        <p class="lead">Encryption happens on your iPhone before anything is written to disk. There's no server to breach and no reset link to phish.</p>
-        <ul class="checklist">
-          <li><svg><use href="#i-check"/></svg><span><strong>AES-256-GCM for every file</strong>Photos, videos, thumbnails and the vault's contents list are all encrypted.</span></li>
-          <li><svg><use href="#i-check"/></svg><span><strong>PBKDF2 key derivation</strong>210,000 rounds of HMAC-SHA256 with a per-device salt kept in the Keychain.</span></li>
-          <li><svg><use href="#i-check"/></svg><span><strong>Encrypted before upload</strong>iCloud backups, file names included, are sealed on your phone first.</span></li>
-          <li><svg><use href="#i-check"/></svg><span><strong>Out of regular backups</strong>The vault folder is excluded from standard iPhone backups.</span></li>
-        </ul>
+        <span class="label">Hidden vaults</span>
+        <h2>Any pattern opens a vault</h2>
+        <p class="lead">Nobody watching can tell how many vaults you have, or whether there are any at all.</p>
       </div>
-      <div class="code reveal" aria-label="Summary of the encryption settings">
-        <div class="code-bar"><i></i><i></i><i></i></div>
-<pre><span class="c">// what protects a VaultLocker vault</span>
-<span class="k">const</span> vault = {
-  cipher:     <span class="s">"AES-256-GCM"</span>,
-  kdf:        <span class="s">"PBKDF2-HMAC-SHA256"</span>,
-  iterations: <span class="n">210_000</span>,
-  salt:       <span class="s">"per-device, in Keychain"</span>,
-  recovery:   <span class="s">"12-word phrase"</span>,
-  account:    <span class="k">null</span>,  <span class="c">// none needed</span>
-  server:     <span class="k">null</span>,  <span class="c">// none exists</span>
-  backdoor:   <span class="k">null</span>,  <span class="c">// none built</span>
-};</pre>
+      <div class="lime-card reveal" aria-hidden="true">
+        <p class="q" data-type="A wrong guess opens a fresh, empty vault.|It's never saved unless you add something.|So a guess leaves no trace behind."></p>
+        <div class="row">
+          <span class="tag"><i><svg class="ic"><use href="#i-layers"/></svg></i>Hidden vaults</span>
+          <span class="tag"><i><svg class="ic"><use href="#i-key"/></svg></i>Recovery phrase</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Story -->
-  <section class="section story">
-    <div class="container reveal">
-      <span class="eyebrow">Built for the worst case</span>
-      <h2>What if someone makes you unlock it?</h2>
-      <p>Most vault apps assume the only threat is someone guessing your code. Real life is messier: a partner, a border check, someone standing over your shoulder.</p>
-      <p>With VaultLocker, the pattern you draw decides which vault opens. A duress pattern opens something harmless and quietly removes the rest. <strong>There's nothing on screen to suggest anything else was ever there.</strong></p>
-      <a class="btn btn-primary" href="https://apps.apple.com/app/idAPP_STORE_ID"><svg><use href="#i-download"/></svg>Download VaultLocker</a>
+  <!-- Worst case -->
+  <section class="worst">
+    <div class="wrap">
+      <div class="split reveal">
+        <h3>What if someone makes you unlock it?</h3>
+        <div>
+          <p>Most vault apps assume the only threat is someone guessing your code. Real life is messier: a partner, a border check, someone standing over your shoulder.</p>
+          <p>With Pro, a duress pattern opens something harmless and quietly removes the rest. There's nothing on screen to suggest anything else was ever there.</p>
+          <a class="btn btn-dark" href="https://apps.apple.com/app/id6830413093"><svg class="ic"><use href="#i-phone"/></svg>Download for iPhone</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="wrap">
+      <span class="label">Features</span>
+      <h2 class="reveal">Everything stays on your phone</h2>
+      <div class="feature-rows">
+        <div class="feature-row reveal"><h3>Two-sided pattern</h3><p>Draw one pattern, the cube turns, draw a second. Together they become your encryption key.</p></div>
+        <div class="feature-row reveal"><h3>Recovery phrase</h3><p>Each vault gets a 12-word phrase. Forget your pattern and the phrase lets you back in.</p></div>
+        <div class="feature-row reveal"><h3>Hidden vaults</h3><p>Any pattern opens a vault. Nobody watching can tell how many you have.</p></div>
+        <div class="feature-row reveal"><h3>Encrypted iCloud backup</h3><p>Backs up to your own iCloud Drive, encrypted first. Only your recovery phrase can restore it.</p></div>
+        <div class="feature-row reveal"><h3>Private camera</h3><p>Take photos and videos straight into a vault. They never touch your camera roll.</p></div>
+        <div class="feature-row reveal"><h3>Duress vault <span class="pro">Pro</span></h3><p>Forced to unlock? One pattern opens a decoy vault and silently wipes the others.</p></div>
+        <div class="feature-row reveal"><h3>Vault sharing <span class="pro">Pro</span></h3><p>Send an encrypted copy of a vault with a one-time phrase. Only the person with both can open it.</p></div>
+        <div class="feature-row reveal"><h3>Multi-device sync <span class="pro">Pro</span></h3><p>Keep a vault in step across your own phones, with changes merged in both directions.</p></div>
+        <div class="feature-row reveal"><h3>Disguised app icon <span class="pro">Pro</span></h3><p>Swap the icon for an everyday one like Calculator or Measure, so it blends into your home screen.</p></div>
+      </div>
     </div>
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="section" style="padding-top:0">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Pricing</span>
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="pricing-head reveal">
         <h2>Start free. Upgrade if you need more.</h2>
-        <p class="lead">The free version uses the same encryption as Pro. Pro lifts the limits and adds the extra protections.</p>
+        <p>The free version uses the same encryption as Pro. Pro lifts the limits and adds the extra protections.</p>
       </div>
       <div class="plans">
         <div class="plan reveal">
           <h3>Free</h3>
           <p class="plan-sub">Everything you need to get started.</p>
           <ul>
-            <li><svg><use href="#i-check"/></svg>Up to 3 vaults</li>
-            <li><svg><use href="#i-check"/></svg>100 photos and 10 videos</li>
-            <li><svg><use href="#i-check"/></svg>Pattern encryption and hidden vaults</li>
-            <li><svg><use href="#i-check"/></svg>Recovery phrase and iCloud backup</li>
-            <li><svg><use href="#i-check"/></svg>Private camera and notes</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Up to 3 vaults</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>100 photos and 10 videos</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Pattern encryption and hidden vaults</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Recovery phrase and iCloud backup</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Private camera and notes</li>
           </ul>
-          <a class="btn btn-ghost" href="https://apps.apple.com/app/idAPP_STORE_ID">Download free</a>
+          <a class="btn btn-line" href="https://apps.apple.com/app/id6830413093">Download free</a>
         </div>
-        <div class="plan pro reveal">
+        <div class="plan featured reveal">
           <h3>Pro</h3>
           <p class="plan-sub">Weekly, yearly or a one-time lifetime purchase.</p>
           <ul>
-            <li><svg><use href="#i-check"/></svg>Unlimited vaults, photos and videos</li>
-            <li><svg><use href="#i-check"/></svg>Duress vault</li>
-            <li><svg><use href="#i-check"/></svg>Vault sharing and multi-device sync</li>
-            <li><svg><use href="#i-check"/></svg>Disguised app icons</li>
-            <li><svg><use href="#i-check"/></svg>Slideshows</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Unlimited vaults, photos and videos</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Duress vault</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Vault sharing and multi-device sync</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Disguised app icons</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Slideshows</li>
           </ul>
-          <a class="btn btn-primary" href="https://apps.apple.com/app/idAPP_STORE_ID">Upgrade in the app</a>
+          <a class="btn btn-olive" href="https://apps.apple.com/app/id6830413093">Upgrade in the app</a>
         </div>
       </div>
       <p class="fine">Purchases are handled by Apple. Subscriptions can be cancelled anytime in Settings.</p>
@@ -276,53 +414,51 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section" style="padding-top:0">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">FAQ</span>
-        <h2>Questions, answered.</h2>
-      </div>
-      <div class="faq-list">
+  <section class="faq" id="faq">
+    <div class="wrap faq-grid">
+      <h2>Questions, answered</h2>
+      <div>
         <details class="qa"><summary>What is VaultLocker?</summary><div class="a"><p>An iPhone app that keeps photos, videos, documents and notes in encrypted vaults, each opened by its own two-sided pattern.</p></div></details>
         <details class="qa"><summary>Do I need an account or email?</summary><div class="a"><p>No. There's no sign-up of any kind. Your pattern is the only thing that opens a vault.</p></div></details>
         <details class="qa"><summary>What if I forget my pattern?</summary><div class="a"><p>Tap <strong>Use recovery phrase</strong> on the lock screen, enter the vault's 12-word phrase, and set a new pattern. Your files stay as they are.</p></div></details>
         <details class="qa"><summary>Can you or Apple see my files?</summary><div class="a"><p>No. Files are encrypted on your iPhone with a key derived from your pattern. We have no servers, and iCloud backups are encrypted before they're uploaded.</p></div></details>
         <details class="qa"><summary>What happens if I lose both my pattern and phrase?</summary><div class="a"><p>The vault can't be opened by anyone, including us. That's the trade-off of having no back door, so keep your phrase somewhere safe, away from your phone.</p></div></details>
-        <details class="qa"><summary>How do hidden vaults work?</summary><div class="a"><p>Every valid pattern opens a vault. If it isn't one you've set up, you see a fresh empty vault that's never saved unless you add something, so a wrong guess leaves no trace.</p></div></details>
         <details class="qa"><summary>How do I move to a new phone?</summary><div class="a"><p>Turn on Encrypted Backup, then on the new phone choose <strong>Restore from iCloud backup</strong> and enter the vault's recovery phrase. <a href="support.html">Full steps are on the support page.</a></p></div></details>
         <details class="qa"><summary>Does VaultLocker collect any data?</summary><div class="a"><p>No. No analytics, no ads, no tracking. Read the <a href="privacy.html">privacy policy</a> for the details.</p></div></details>
       </div>
     </div>
   </section>
 
-  <!-- Final CTA -->
-  <section class="cta-band">
-    <div class="container">
-      <div class="cta-card reveal">
-        <img src="assets/icon.png" alt="" width="72" height="72">
-        <h2>Lock it in the cube.</h2>
-        <p>Free to download. No account. Set up your first vault in under a minute.</p>
-        <a class="btn btn-primary" href="https://apps.apple.com/app/idAPP_STORE_ID"><svg><use href="#i-download"/></svg>Download on the App Store</a>
+  <!-- Closing -->
+  <section class="closing">
+    <div class="closing-side"><small>Your photos, locked in a cube.</small></div>
+    <div class="closing-main reveal">
+      <h2>Your first vault in under a minute</h2>
+      <p>Free to download. No account. The same encryption whether you pay or not.</p>
+      <div class="hero-cta">
+        <a class="btn btn-dark" href="https://apps.apple.com/app/id6830413093">Download for free <svg class="ic"><use href="#i-down"/></svg></a>
+        <a class="btn btn-line" href="#pricing">View pricing</a>
       </div>
     </div>
+    <div class="closing-side right"></div>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo"><img src="assets/icon.png" alt="" width="32" height="32"><span>VaultLocker</span></a>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="logo"><img src="assets/logo-mark.svg" alt="" width="28" height="28">vaultlocker</a>
         <p>Encrypted photo and video vault for iPhone. No accounts, no servers, no tracking.</p>
       </div>
       <div>
         <h4>Product</h4>
         <ul>
-          <li><a href="index.html#features">Features</a></li>
-          <li><a href="index.html#security">Security</a></li>
-          <li><a href="index.html#pricing">Pricing</a></li>
-          <li><a href="https://apps.apple.com/app/idAPP_STORE_ID">App Store</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="https://apps.apple.com/app/id6830413093">App Store</a></li>
         </ul>
       </div>
       <div>
@@ -335,13 +471,15 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="year">2026</span> VaultLocker</span>
+    <div class="foot-bar">
       <span>Made for iPhone</span>
+      <span>© <span id="year">2026</span> VaultLocker</span>
     </div>
+    <div class="wordmark" aria-hidden="true">vaultlocker</div>
   </div>
 </footer>
 
 <script src="main.js"></script>
+<script src="home.js"></script>
 </body>
 </html>

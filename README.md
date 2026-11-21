@@ -21,7 +21,7 @@ Then open http://localhost:8000. Stop with Ctrl+C.
 ## Placeholders to fill in
 
 - `SUPPORT_EMAIL@example.com`: support address (all pages)
-- `https://apps.apple.com/app/idAPP_STORE_ID`: App Store link (index.html header, hero, pricing, CTA, footer)
+- App Store link: `https://apps.apple.com/app/id6830413093` (all download buttons; Smart App Banner `apple-itunes-app` meta in each page head)
 
 `grep -rn "SUPPORT_EMAIL\|APP_STORE_ID" .` finds them all.
 

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Before and After</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@400;500;600&display=swap">
+  <style>
+    /* A recording stage for social posts: the old page (before.html) and the
+       new one (index.html) rendered at real viewport sizes, scaled to fit, with
+       scroll kept in step so one swipe moves both. Both frames are same-origin,
+       which is what lets this page read and drive their scroll position, so it
+       has to be served (python3 -m http.server), not opened as a file. */
+    :root {
+      --bg: #f7f7f2; --ink: #292929; --muted: #72726e; --line: #d5d5d2;
+      --olive: #5b6f00; --lime: #d1e043; --card: #fff;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body { background: var(--bg); color: var(--ink); font: 14px/1.4 "Inter", system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; }
+    .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #fff; }
+    .bar h1 { margin: 0 8px 0 0; font: 400 20px/1 "IBM Plex Serif", Georgia, serif; }
+    .seg { display: inline-flex; background: #eeeee8; border-radius: 999px; padding: 3px; }
+    .seg button, .btn { border: 0; background: transparent; font: inherit; color: var(--ink); padding: 7px 13px; border-radius: 999px; cursor: pointer; }
+    .seg button[aria-pressed="true"] { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+    .btn { background: #eeeee8; }
+    .btn.primary { background: var(--olive); color: #fcfcf8; }
+    label.tog { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+    .hint { margin-left: auto; color: var(--muted); font-size: 12px; }
+    .bar select { font: inherit; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; background: #fff; }
+
+    .stage { position: relative; flex: 1; min-height: 0; padding: 20px; display: flex; gap: 20px; justify-content: center; align-items: center; }
+    .pane { position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 0; flex: 1; height: 100%; }
+    .tag { font: 500 13px/1 "Inter", sans-serif; padding: 7px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); }
+    .pane.after .tag { background: var(--lime); border-color: transparent; }
+    .box { position: relative; flex: 1; width: 100%; min-height: 0; display: grid; place-items: center; }
+    .screen { position: relative; overflow: hidden; background: #fff; border-radius: 12px; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 20px 50px -20px rgba(0,0,0,.35); }
+    .screen iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; background: #fff; }
+    body.phone .screen { border-radius: 44px; box-shadow: 0 0 0 10px #111, 0 0 0 11px #333, 0 30px 60px -20px rgba(0,0,0,.5); }
+
+    /* Slider: both panes occupy the same box; the after pane is clipped. */
+    body.slider .stage { display: block; }
+    body.slider .pane { position: absolute; inset: 20px; height: auto; }
+    body.slider .pane.after { clip-path: inset(0 0 0 var(--cut, 50%)); }
+    body.slider .pane .tag { position: absolute; top: 0; z-index: 2; }
+    body.slider .pane.before .tag { left: 0; }
+    body.slider .pane.after .tag { right: 0; }
+    .handle { display: none; position: absolute; top: 20px; bottom: 20px; left: var(--cutx, 50%); width: 36px; margin-left: -18px; cursor: ew-resize; z-index: 5; touch-action: none; }
+    .handle::before { content: ""; position: absolute; left: 17px; top: 0; bottom: 0; width: 2px; background: var(--ink); }
+    .handle::after { content: "\2194"; position: absolute; left: 0; top: 50%; width: 36px; height: 36px; margin-top: -18px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 18px; }
+    body.slider .handle { display: block; }
+    body.dragging iframe { pointer-events: none; }
+
+    /* Recording mode: no toolbar, nothing but the two pages. */
+    body.clean .bar { display: none; }
+    @media (max-width: 720px) { .stage { flex-direction: column; padding: 12px; } .hint { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <h1>Before / After</h1>
+    <div class="seg" role="group" aria-label="Layout">
+      <button type="button" data-layout="side" aria-pressed="true">Side by side</button>
+      <button type="button" data-layout="slider" aria-pressed="false">Slider</button>
+    </div>
+    <div class="seg" role="group" aria-label="Device">
+      <button type="button" data-device="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" data-device="phone" aria-pressed="false">Phone</button>
+    </div>
+    <label class="tog"><input type="checkbox" id="sync" checked> Sync scroll</label>
+    <select id="speed" aria-label="Auto-scroll length">
+      <option value="12">12 s</option>
+      <option value="20" selected>20 s</option>
+      <option value="30">30 s</option>
+    </select>
+    <button type="button" class="btn primary" id="auto">Auto-scroll</button>
+    <button type="button" class="btn" id="top">Back to top</button>
+    <button type="button" class="btn" id="clean">Hide toolbar</button>
+    <span class="hint">H toggles toolbar · Space auto-scrolls</span>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="pane before"><span class="tag">Before</span><div class="box"><div class="screen"><iframe src="before.html" title="Current site"></iframe></div></div></div>
+    <div class="pane after"><span class="tag">After</span><div class="box"><div class="screen"><iframe src="index.html" title="Redesigned site"></iframe></div></div></div>
+    <div class="handle" id="handle" role="slider" aria-label="Reveal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
+  </div>
+
+<script>
+(function () {
+  var body = document.body;
+  var frames = [].slice.call(document.querySelectorAll('iframe'));
+  var VIEW = { desktop: { w: 1440, h: 900 }, phone: { w: 390, h: 844 } };
+  var state = { layout: 'side', device: 'desktop', cut: 50 };
+
+  // Desktop frames keep a real 1440px viewport and are scaled down, so the
+  // layout shown is the one a visitor sees, not a squeezed one. Height is
+  // whatever fills the box at that scale. Phones keep a fixed 390x844.
+  function fit() {
+    frames.forEach(function (f) {
+      var box = f.closest('.box'), screen = f.parentNode;
+      var bw = box.clientWidth, bh = box.clientHeight;
+      var v = VIEW[state.device], w = v.w, h, s;
+      if (state.device === 'desktop') { s = bw / w; h = bh / s; }
+      else { h = v.h; s = Math.min(bh / h, bw / w) * 0.96; }
+      f.style.width = w + 'px'; f.style.height = h + 'px';
+      f.style.transform = 'scale(' + s + ')';
+      screen.style.width = (w * s) + 'px'; screen.style.height = (h * s) + 'px';
+    });
+    placeHandle();
+  }
+
+  // The handle tracks the visible screen, not the whole pane, so in phone mode
+  // the cut lands on the phone rather than the empty space around it.
+  function placeHandle() {
+    var stage = document.getElementById('stage').getBoundingClientRect();
+    var scr = frames[0].parentNode.getBoundingClientRect();
+    var x = scr.left - stage.left + scr.width * state.cut / 100;
+    var paneLeft = document.querySelector('.pane.after').getBoundingClientRect().left - stage.left;
+    body.style.setProperty('--cutx', x + 'px');
+    body.style.setProperty('--cut', (x - paneLeft) + 'px');
+  }
+
+  function setPressed(attr, val) {
+    document.querySelectorAll('[data-' + attr + ']').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-' + attr) === val));
+    });
+  }
+  document.querySelectorAll('[data-layout]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state.layout = b.getAttribute('data-layout');
+      body.classList.toggle('slider', state.layout === 'slider');
+      setPressed('layout', state.layout); requestAnimationFrame(fit);
+    });
+  });
+  document.querySelectorAll('[data-device]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state.device = b.getAttribute('data-device');
+      body.classList.toggle('phone', state.device === 'phone');
+      setPressed('device', state.device); requestAnimationFrame(fit);
+    });
+  });
+  window.addEventListener('resize', fit);
+
+  // Scroll sync by fraction of scrollable height: the pages differ in length,
+  // so matching pixels would leave one stuck at its footer while the other is
+  // halfway down.
+  function win(f) { try { return f.contentWindow; } catch (e) { return null; } }
+  function maxY(w) { var d = w.document.documentElement; return Math.max(1, d.scrollHeight - w.innerHeight); }
+  function setFrac(w, frac) { w.scrollTo({ top: frac * maxY(w), behavior: 'instant' }); }
+  var syncing = null;
+  frames.forEach(function (f, i) {
+    f.addEventListener('load', function () {
+      var w = win(f); if (!w) return;
+      w.addEventListener('scroll', function () {
+        if (!document.getElementById('sync').checked || auto) return;
+        if (syncing && syncing !== w) return;
+        syncing = w;
+        var other = win(frames[1 - i]);
+        if (other) setFrac(other, w.scrollY / maxY(w));
+        clearTimeout(f._t); f._t = setTimeout(function () { syncing = null; }, 80);
+      }, { passive: true });
+      // Recording should not depend on where the mouse is, so keys pressed
+      // inside a frame still reach this page.
+      w.addEventListener('keydown', onKey);
+    });
+  });
+
+  var auto = null;
+  function stopAuto() { if (auto) cancelAnimationFrame(auto); auto = null; document.getElementById('auto').textContent = 'Auto-scroll'; }
+  function startAuto() {
+    var secs = +document.getElementById('speed').value, t0 = null;
+    var start = (function () { var w = win(frames[0]); return w ? w.scrollY / maxY(w) : 0; })();
+    if (start > 0.98) start = 0;
+    document.getElementById('auto').textContent = 'Stop';
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var frac = Math.min(1, start + (ts - t0) / (secs * 1000));
+      frames.forEach(function (f) { var w = win(f); if (w) setFrac(w, frac); });
+      if (frac < 1) auto = requestAnimationFrame(step); else stopAuto();
+    }
+    auto = requestAnimationFrame(step);
+  }
+  function toggleAuto() { auto ? stopAuto() : startAuto(); }
+  document.getElementById('auto').addEventListener('click', toggleAuto);
+  document.getElementById('top').addEventListener('click', function () {
+    stopAuto(); frames.forEach(function (f) { var w = win(f); if (w) setFrac(w, 0); });
+  });
+  document.getElementById('clean').addEventListener('click', function () { body.classList.add('clean'); requestAnimationFrame(fit); });
+
+  function onKey(e) {
+    if (e.target && /INPUT|SELECT/.test(e.target.tagName)) return;
+    if (e.key === 'h' || e.key === 'H') { body.classList.toggle('clean'); requestAnimationFrame(fit); }
+    else if (e.key === ' ') { e.preventDefault(); toggleAuto(); }
+  }
+  document.addEventListener('keydown', onKey);
+
+  // Slider drag. Iframes swallow pointer events, so they are disabled while
+  // dragging (body.dragging) or the handle would stick the moment it crosses one.
+  var handle = document.getElementById('handle');
+  function dragTo(clientX) {
+    var scr = frames[0].parentNode.getBoundingClientRect();
+    state.cut = Math.max(0, Math.min(100, (clientX - scr.left) / scr.width * 100));
+    handle.setAttribute('aria-valuenow', Math.round(state.cut));
+    placeHandle();
+  }
+  handle.addEventListener('pointerdown', function (e) {
+    handle.setPointerCapture(e.pointerId); body.classList.add('dragging'); dragTo(e.clientX);
+  });
+  handle.addEventListener('pointermove', function (e) { if (body.classList.contains('dragging')) dragTo(e.clientX); });
+  handle.addEventListener('pointerup', function () { body.classList.remove('dragging'); });
+  handle.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      state.cut = Math.max(0, Math.min(100, state.cut + (e.key === 'ArrowLeft' ? -5 : 5)));
+      placeHandle(); e.preventDefault();
+    }
+  });
+
+  fit();
+})();
+</script>
+</body>
+</html>
